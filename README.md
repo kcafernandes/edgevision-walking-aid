@@ -16,7 +16,6 @@ The system uses **Python, YOLOv8n, Depth Anything V2, TensorRT, and Jetson Orin 
 - [Key Features](#key-features)
 - [Repository Structure](#repository-structure)
 - [Results](#results)
-- [My Role](#my-role)
 - [Setup / Running the Project](#setup--running-the-project)
 - [Future Improvements](#future-improvements)
 - [Disclaimer](#disclaimer)
@@ -55,6 +54,7 @@ The system is designed to:
 
 ## System Overview
 
+![EdgeVision System Design](media/system_design_diagram.png)
 
 
 EdgeVision is organized into three main parts:
@@ -240,32 +240,41 @@ The system was able to:
 - Generate spoken audio alerts for the user
 - Keep real-time detection and warning logic local to the Jetson devices
 
-This showed how computer vision, depth estimation, and audio feedback can work together to improve environmental awareness for visually impaired users.
-
----
-
-## My Role
-
-My contributions focused on the edge AI and audio warning pipeline.
-
-I worked on:
-
-- System design and architecture planning
-- Frame preprocessing for the vision pipeline
-- Depth estimation integration using Depth Anything V2
-- Hazard ranking and priority logic
-- Priority queue and deduplication logic for urgent alerts
-- Accessible audio output through headphones
-- Text-to-speech integration for spoken warnings
-- Organizing the prototype into a cleaner GitHub repository structure
-
-This project helped me practice building a real embedded AI system that connects computer vision, robotics-style perception, networking, and user-facing feedback.
+This showed how a few components can communicate with eachother effectively and provide instant and useful feedback of one's surroundings.
 
 ---
 
 ## Setup / Running the Project
 
 > Note: This project is designed for Jetson hardware and may not run fully on a regular laptop without modification.
+
+### Hardware Setup
+
+This prototype uses two Jetson Orin Nano boards connected together with a standard Ethernet cable.
+
+| Device | Purpose |
+|---|---|
+| Jetson Nano A | Vision node for camera input, object detection, and depth estimation |
+| Jetson Nano B | Audio node for receiving alerts and generating spoken warnings |
+| Camera | Connected to Jetson Nano A for live visual input |
+| Headphones | Connected to Jetson Nano B through Bluetooth for audio feedback |
+| Ethernet cable | Connects Jetson Nano A and Jetson Nano B for local communication |
+
+### Physical Connection
+
+```txt
+Camera
+  ↓
+Jetson Nano A
+  ↓ Ethernet cable
+Jetson Nano B
+  ↓ Bluetooth
+Headphones
+```
+
+Jetson Nano A captures the camera feed and runs the vision pipeline.  
+Jetson Nano B receives hazard messages from Jetson Nano A and speaks warnings through the Bluetooth-connected headphones.
+
 
 ### Install Python dependencies
 
