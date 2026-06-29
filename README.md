@@ -250,30 +250,16 @@ This showed how a few components can communicate with eachother effectively and 
 
 ### Hardware Setup
 
-This prototype uses two Jetson Orin Nano boards connected together with a standard Ethernet cable.
+For the prototype, we used:
 
-| Device | Purpose |
-|---|---|
-| Jetson Nano A | Vision node for camera input, object detection, and depth estimation |
-| Jetson Nano B | Audio node for receiving alerts and generating spoken warnings |
-| Camera | Connected to Jetson Nano A for live visual input |
-| Headphones | Connected to Jetson Nano B through Bluetooth for audio feedback |
-| Ethernet cable | Connects Jetson Nano A and Jetson Nano B for local communication |
-
-### Physical Connection
+- 2 Jetson Orin Nano boards
+- 1 camera connected to Jetson Nano A
+- Bluetooth headphones connected to Jetson Nano B
+- A standard Ethernet cable connecting both Jetson boards
 
 ```txt
-Camera
-  ↓
-Jetson Nano A
-  ↓ Ethernet cable
-Jetson Nano B
-  ↓ Bluetooth
-Headphones
+Camera → Jetson Nano A → Ethernet → Jetson Nano B → Bluetooth Headphones
 ```
-
-Jetson Nano A captures the camera feed and runs the vision pipeline.  
-Jetson Nano B receives hazard messages from Jetson Nano A and speaks warnings through the Bluetooth-connected headphones.
 
 
 ### Install Python dependencies
