@@ -52,10 +52,6 @@ edgevision-walking-aid/
 
 This repository is currently being organized from a working prototype into a clean, professional project structure.
 
-## My Role
-
-I worked on the edge AI pipeline, including object detection, depth estimation, hazard ranking, TCP communication between Jetson boards, and audio warning logic.
-
 ## Disclaimer
 
-This is a student prototype and portfolio project. It is not a certified medical or safety device.
+I am a student and this is a prototype for a portfolio project. It is not a certified medical or safety device.
